@@ -31,7 +31,7 @@ def cesars_cypher(text, shift, operation):
             character = text[i] # Get the character in the position i
             # if the character is lowercase
             if character.islower():
-                string += chr((ord(character) + shift - 97) % 26 + 97)
+                string += chr((ord(character) + shift - 97) % 27 + 97)
             # if the character is a space
             elif character == " ":
                 string += chr(((123) + shift - 97 ) % 27 + 97)
