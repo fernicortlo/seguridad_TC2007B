@@ -50,7 +50,7 @@ def cesars_cypher(text, shift, operation):
                 string += " "
             elif character.islower():
                 string += chr((ord(character) - shift - 97) % 27 + 97)
-        print("The deciphered text is: ", string) 
+        print(f"\n With shift {shift}, the decrypted text is: {string}\n")
 
     return string
 
@@ -59,7 +59,7 @@ def brute_force(filename):
 
     for shift in range(27):  # Because there are 26 possible shifts in Caesar cipher
         result = cesars_cypher(text, shift, "2")
-        all_results += f"With shift {shift}, the decrypted text is: {result}\n"
+        all_results += f"\n With shift {shift}, the decrypted text is: {result}\n"
 
     write_to_file("bruteforce_results.txt", all_results)
 
