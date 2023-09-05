@@ -10,10 +10,18 @@
 
 # The alphabet used will be "abcdefghijklmnopqrstuvwxyz ", the space is included.
 # lowecase letters: 97 - 122
-            # uppercase letters: 65 - 90
-            # space: 32
+        # uppercase letters: 65 - 90
 
-
+def read_from_file(filename):
+    """Reads the content of a given file and returns it."""
+    with open(filename, 'r') as file:
+        return file.read()
+    
+def write_to_file(filename, content):
+    """Writes content to a given file."""
+    with open(filename, 'w') as file:
+        file.write(content)
+    
 # Function to encrypt the text using ASCII code
 def cesars_cypher(text, shift, operation):
     string = "" # Empty string to store the encrypted text
@@ -41,12 +49,32 @@ def cesars_cypher(text, shift, operation):
             if character == chr(((123) + shift - 97 ) % 27 + 97):
                 string += " "
             elif character.islower():
-                string += chr((ord(character) - shift - 97) % 26 + 97)
+                string += chr((ord(character) - shift - 97) % 27 + 97)
         print("The deciphered text is: ", string) 
 
     return string
 
-operation = input("Do you want to encrypt (1) or decrypt (2) the text? ")
-text = input("Enter the text: ")
-shift_value = int(input("Enter the Caesar cipher shift value (positive integer): "))
-cesars_cypher(text, shift_value, operation)
+def brute_force(filename):
+    all_results = ""
+
+    for shift in range(27):  # Because there are 26 possible shifts in Caesar cipher
+        result = cesars_cypher(text, shift, "2")
+        all_results += f"With shift {shift}, the decrypted text is: {result}\n"
+
+    write_to_file("bruteforce_results.txt", all_results)
+
+    print("Results saved to bruteforce_results.txt")
+
+print("Welcome to the Caesar's Cipher program!")
+# MAIN
+start = input("Do you have a key? (y/n) ")
+if start == "y":
+    operation = input("Do you want to encrypt (1) or decrypt (2) the text? ")
+    text = input("Enter the text: ")
+    shift_value = int(input("Enter the Caesar cipher shift value: "))
+    cesars_cypher(text, shift_value, operation)
+else:
+    filename = input("Enter the name of the txt file with extension: ")
+    text = read_from_file(filename)
+    brute_force(text)
+
