@@ -61,9 +61,7 @@ def brute_force(filename):
         result = cesars_cypher(text, shift, "2")
         all_results += f"\n With shift {shift}, the decrypted text is: {result}\n"
 
-    write_to_file("bruteforce_results.txt", all_results)
-
-    print("Results saved to bruteforce_results.txt")
+    
 
 print("Welcome to the Caesar's Cipher program!")
 # MAIN
