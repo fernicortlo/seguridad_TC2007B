@@ -33,34 +33,27 @@ def encrypt(text, key):
 
 
 def main():
-    with open("input.txt", "r") as f:
-        text = f.read().strip()
+    # ask for the file name
+    file_name = input("Enter the name of the file with the text to encrypt with .txt extention: ")
 
+    # read the content of the file
+    with open(file_name, "r") as f:
+        text = f.read()
+
+    # generate a key
     key = generate_key(len(text))
+    # encrypt the text
     ciphertext = encrypt(text, key)
 
-    with open("OTP.txt", "w") as f:
-        f.write(f'Key: {key}\n')
-        f.write('Ciphertext:\n')
+    # write the ciphertext and the key to a file
+    with open("OTP_CipherOutput.txt", "w") as f:
+        f.write("Ciphertext:\n")
         f.write(ciphertext)
+        f.write("\nKey:\n")
+        f.write(key)
 
-    print("The ciphertext and key have been saved to OTP.txt")
-
-# Asks user if they want to decrypt the text
-ask = input("Do you want to decrypt the text? (y/n): ")
-if ask == "y":
-    with open("OTP.txt", "r") as f:
-        lines = f.readlines()
-        key = lines[0].strip().split(": ")[1]
-        ciphertext = lines[2]
-
-    decrypt = xor(ciphertext, key)
-    print("The decrypted text is:", decrypt)
-elif ask == "n":
-    print("Okay, bye!")
-else:
-    print("Invalid option! Please enter 'y' for yes or 'n' for no.")
-
+    print("The ciphertext and key have been saved to OTP_CipherOutput.txt")
 main()
+
 
  
