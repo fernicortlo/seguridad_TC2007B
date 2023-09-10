@@ -13,12 +13,12 @@
         # uppercase letters: 65 - 90
 
 def read_from_file(filename):
-    """Reads the content of a given file and returns it."""
+    #Reads the content of a given file and returns it.
     with open(filename, 'r') as file:
         return file.read()
     
 def write_to_file(filename, content):
-    """Writes content to a given file."""
+    #Writes content to a given file.
     with open(filename, 'w') as file:
         file.write(content)
     
