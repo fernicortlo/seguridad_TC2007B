@@ -4,8 +4,8 @@
 
 # This code is a simple implementation of the One time pad cipher.
 # It is a symetric key algorithm in which the key is used to encrypt and decrypt the message.
-# The user must enter a plaintext and the code will return the encrypted text and the key used. 
-# The key will be randomly generated.
+# The user must enter a txt file  and the code will return a txt file with the ciphertext and the key.
+# The key will be randomly generated and will be different each tine.
 
 # The alphabet used will be "abcdefghijklmnopqrstuvwxyz ", the space is included.
 # This code uses the secrets module where some of the characters are non-printable characters.
